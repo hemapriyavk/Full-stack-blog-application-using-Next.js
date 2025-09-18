@@ -15,7 +15,7 @@ import blog_pic_14 from './blog_pic_14.png';
 import blog_pic_15 from './blog_pic_15.png';
 import blog_pic_16 from './blog_pic_16.png';
 import facebook_icon from './facebook_icon.png'
-import googleplus_icon from './googleplus_icon.png'
+import googlePlus_icon from './googleplus_icon.png'
 import twitter_icon from './twitter_icon.png'
 import profile_icon from './profile_icon.png'
 import logo from './logo.png'
@@ -28,7 +28,7 @@ import upload_area from './upload_area.png'
 
 export const assets = {
     facebook_icon,
-    googleplus_icon,
+    googlePlus_icon,
     twitter_icon,
     profile_icon,
     logo,
@@ -192,7 +192,7 @@ export const assets = {
     },
     {
         id:16,
-        title:"Shaping the Future of statup ecosystem in the world",
+        title:"Shaping the Future of startup ecosystem in the world",
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image:blog_pic_16,
         date:Date.now(),
