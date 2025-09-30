@@ -1,6 +1,7 @@
 'use client'
 import { assets, blog_data } from '@/Assets/assets';
 import Footer from '@/Components/Footer';
+import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, {useState, useEffect} from 'react'
@@ -8,16 +9,22 @@ import React, {useState, useEffect} from 'react'
 const page = ({params}) => {
     const [data, setData] = useState(null);
 
-    const fetchBlogData = () => {
-        for(let i=0; i<blog_data?.length; i++){
-            if(Number(params?.id) === blog_data[i].id){
-                setData(blog_data[i]);
-                break;
-            }
-        }
-    }
-
     useEffect(() => {
+        const fetchBlogData = async () => {
+            try {
+                const response = await axios.get('/api/blog',{
+                    params: {
+                        id: params?.id
+                    }
+                });
+                if(response?.data?.blog){
+                    setData(response?.data?.blog)
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        
+    }
         fetchBlogData();
     }, []);
     

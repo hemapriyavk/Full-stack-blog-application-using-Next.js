@@ -62,9 +62,9 @@ const Page = () => {
       <p className='text-xl mt-4'>Blog Category</p>
       <select name='category' className='w-43 mt-4 px-4 py-3 border text-gray-500' value={data?.category} onChange={onChangeHandler}>
         <option value = ''>Select Category</option>
-        <option value='startup'>Startup</option>
-        <option value='technology'>Technology</option>
-        <option value='lifeStyle'>Lifestyle</option>
+        <option value='Startup'>Startup</option>
+        <option value='Technology'>Technology</option>
+        <option value='Lifestyle'>Lifestyle</option>
       </select>
       <br />
       <button type='submit' className='mt-8 w-40 h-12 bg-black text-white'>Add</button>
