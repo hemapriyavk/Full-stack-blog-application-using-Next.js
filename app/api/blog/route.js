@@ -10,10 +10,11 @@ const loadDB = async () => {
 loadDB();
 
 export async function GET(request){
-    console.log('Blog GET Hit');
-    return NextResponse.json({msg: "API working"})
+    const blogs = await BlogModel.find({});
+    return NextResponse.json({blogs});
 }
 
+// add blogs
 export async function POST(request){
     const formData = await request.formData();
     const timeStamp = Date.now();
@@ -36,8 +37,5 @@ export async function POST(request){
         author_img: `${formData.get('author_img')}`,
     }
     await BlogModel.create(blogData);
-
-    console.log('!!!!! imageURL', imgUrl, "Blog saved");
-
     return NextResponse.json({success: true, msg: "Blog Added"});
 }
