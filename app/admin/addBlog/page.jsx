@@ -30,7 +30,6 @@ const Page = () => {
       formData.append('author', data?.author);
       formData.append('author_img', data?.authorImg);
       formData.append('image', image);
-      console.log('!!!!! formData', formData);
   
       const response = await axios.post('/api/blog', formData);
       if(response?.data?.success){
