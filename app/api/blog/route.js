@@ -29,13 +29,18 @@ export async function POST(request) {
     const timeStamp = Date.now();
 
     const image = formData?.get("image");
+    console.log('!!!!! image', image);
     const imageByteData = await image.arrayBuffer();
+    console.log('!!!!! imageByteData', imageByteData);
     const buffer = Buffer.from(imageByteData);
+    console.log('!!!!! buffer', buffer);
 
     const path = `./public/${timeStamp}_${image.name}`;
+    console.log('!!!!! path', path);
     await writeFile(path, buffer);
 
     const imgUrl = `/${timeStamp}_${image.name}`;
+    console.log('!!!!! imgUrl', imgUrl);
 
     const blogData = {
       title: `${formData.get("title")}`,
@@ -45,10 +50,11 @@ export async function POST(request) {
       image: `${imgUrl}`,
       author_img: `${formData.get("author_img")}`,
     };
+    console.log('!!!!! blogData', blogData);
     await BlogModel.create(blogData);
     return NextResponse.json({ success: true, msg: "Blog Added" });
   } catch (error) {
-    return NextResponse.json({ success: true, msg: error });
+    return NextResponse.json({ success: false, msg: error });
   }
 
 }
