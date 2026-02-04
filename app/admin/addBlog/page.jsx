@@ -21,30 +21,35 @@ const Page = () => {
   }
 
   const onSubmitHandler = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('title', data?.title);
-    formData.append('description', data?.description);
-    formData.append('category', data?.category);
-    formData.append('author', data?.author);
-    formData.append('author_img', data?.authorImg);
-    formData.append('image', image);
-    console.log('!!!!! formData', formData);
-
-    const response = await axios.post('/api/blog', formData);
-    if(response?.data?.success){
-      toast.success(response?.data?.msg);
-      setData({
-        title: '',
-        description: '',
-        category: '',
-        author: 'HP Blogger',
-        authorImg: '/user_profile_icon.png'
-      });
-      setImage(false);
-    } else {
-      toast.error("Error");
+    try {
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('title', data?.title);
+      formData.append('description', data?.description);
+      formData.append('category', data?.category);
+      formData.append('author', data?.author);
+      formData.append('author_img', data?.authorImg);
+      formData.append('image', image);
+      console.log('!!!!! formData', formData);
+  
+      const response = await axios.post('/api/blog', formData);
+      if(response?.data?.success){
+        toast.success(response?.data?.msg);
+        setData({
+          title: '',
+          description: '',
+          category: '',
+          author: 'HP Blogger',
+          authorImg: '/user_profile_icon.png'
+        });
+        setImage(false);
+      } else {
+        toast.error(response?.data?.msg);
+      }
+    } catch (error) {
+      toast.error('error')
     }
+   
   }
 
   return (

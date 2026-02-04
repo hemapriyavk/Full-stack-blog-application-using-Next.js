@@ -23,35 +23,40 @@ export async function GET(request) {
 
 // add blogs
 export async function POST(request) {
-  console.log('!!!!! request', request);
-  const formData = await request.formData();
-  const timeStamp = Date.now();
+  try {
+    console.log('!!!!! request', request);
+    const formData = await request.formData();
+    const timeStamp = Date.now();
 
-  const image = formData?.get("image");
-  const imageByteData = await image.arrayBuffer();
-  const buffer = Buffer.from(imageByteData);
+    const image = formData?.get("image");
+    const imageByteData = await image.arrayBuffer();
+    const buffer = Buffer.from(imageByteData);
 
-  const path = `./public/${timeStamp}_${image.name}`;
-  await writeFile(path, buffer);
+    const path = `./public/${timeStamp}_${image.name}`;
+    await writeFile(path, buffer);
 
-  const imgUrl = `/${timeStamp}_${image.name}`;
+    const imgUrl = `/${timeStamp}_${image.name}`;
 
-  const blogData = {
-    title: `${formData.get("title")}`,
-    description: `${formData.get("description")}`,
-    category: `${formData.get("category")}`,
-    author: `${formData.get("author")}`,
-    image: `${imgUrl}`,
-    author_img: `${formData.get("author_img")}`,
-  };
-  await BlogModel.create(blogData);
-  return NextResponse.json({ success: true, msg: "Blog Added" });
+    const blogData = {
+      title: `${formData.get("title")}`,
+      description: `${formData.get("description")}`,
+      category: `${formData.get("category")}`,
+      author: `${formData.get("author")}`,
+      image: `${imgUrl}`,
+      author_img: `${formData.get("author_img")}`,
+    };
+    await BlogModel.create(blogData);
+    return NextResponse.json({ success: true, msg: "Blog Added" });
+  } catch (error) {
+    return NextResponse.json({ success: true, msg: error });
+  }
+
 }
 
 export async function DELETE(request) {
   const id = await request.nextUrl.searchParams.get('id');
   const blog = await BlogModel.findById(id);
-  fs.unlink(`./public${blog?.image}`, () => {});
+  fs.unlink(`./public${blog?.image}`, () => { });
   await BlogModel.findByIdAndDelete(id);
-  return NextResponse.json({success: true, msg: "Blog deleted successfully"});
+  return NextResponse.json({ success: true, msg: "Blog deleted successfully" });
 }
