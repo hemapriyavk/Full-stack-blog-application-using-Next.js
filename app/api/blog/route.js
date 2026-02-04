@@ -23,6 +23,7 @@ export async function GET(request) {
 
 // add blogs
 export async function POST(request) {
+  console.log('!!!!! request', request);
   const formData = await request.formData();
   const timeStamp = Date.now();
 
