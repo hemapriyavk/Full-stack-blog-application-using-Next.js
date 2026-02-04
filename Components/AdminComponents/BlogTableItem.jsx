@@ -6,7 +6,7 @@ const BlogTableItem = ({ authorImg, title, author, date, deleteBlog, mongoId }) 
     const blogDate = new Date(date);
 
     return (
-        <tr className='bg-white border-b'>
+        <tr className='bg-slate-100 border-b border-slate-300'>
             <th scope='row' className='items-center gap-3 hidden sm:flex px-6 py-4 font-medium text-gray-900 whitespace-nowrap'>
 
                 <Image width={40} height={40} alt='author-img' src={authorImg ? authorImg : assets?.profile_icon} />

@@ -3,7 +3,7 @@ import React from 'react'
 const EmailTableItem = ({ email, date, deleteSubscribedEmail, id }) => {
     const emailDate = new Date(date);
     return (
-        <tr className='bg-white border-b text-left'>
+        <tr className='bg-slate-100 border-b text-left border-slate-300'>
             <th scope='row' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'>
                 {
                     email ? email : "No Email"

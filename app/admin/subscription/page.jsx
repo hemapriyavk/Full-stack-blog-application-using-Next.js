@@ -33,9 +33,9 @@ const Page = () => {
   return (
     <div className='flex-1 pt-5 px-5 sm:pt-12 sm:pl-16'>
       <h1>All Subscription</h1>
-      <div className='relative max-w-[600px] h-[80vh] overflow-x-auto mt-4 border border-gray-400 scrollbar-hide'>
-        <table className='w-full text-sm text-gray-500'>
-          <thead className='text-xs text-left text-gray-700 uppercase bg-gray-50'>
+      <div className='relative max-w-[850px] h-[80vh] overflow-x-auto mt-4 border border-slate-300 scrollbar-hide'>
+        <table className='w-full text-sm text-gray-500 bg-slate-100'>
+          <thead className='text-sm text-left text-gray-700 uppercase bg-slate-100 border-b border-slate-300'>
             <tr>
               <th scope='col' className='px-6 py-3'>Email Subscription</th>
               <th scope='col' className='hidden sm:block px-6 py-3'>Date</th>

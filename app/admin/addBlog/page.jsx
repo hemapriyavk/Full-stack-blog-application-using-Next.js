@@ -54,20 +54,20 @@ const Page = () => {
       <input onChange={(e)=> setImage(e.target.files[0])} type='file' id='image' hidden required />
 
       <p className='text-xl mt-4'>Blog title</p>
-      <input type='text' placeholder='Type blog title here' required name='title' value={data?.title} onChange={onChangeHandler} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' />
+      <input type='text' placeholder='Type blog title here' required name='title' value={data?.title} onChange={onChangeHandler} className='w-full sm:w-[500px] mt-4 px-4 py-3 border border-slate-300' />
 
       <p className='text-xl mt-4'>Blog description</p>
-      <textarea type='text' placeholder='Type content here' required name = 'description' value={data?.description} onChange={onChangeHandler} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' />
+      <textarea type='text' placeholder='Type content here' required name = 'description' value={data?.description} onChange={onChangeHandler} className='w-full sm:w-[500px] mt-4 px-4 py-3 border border-slate-300' />
 
       <p className='text-xl mt-4'>Blog Category</p>
-      <select name='category' className='w-43 mt-4 px-4 py-3 border text-gray-500' value={data?.category} onChange={onChangeHandler}>
+      <select name='category' className='w-43 mt-4 px-4 py-3 border text-gray-500 border-slate-300' value={data?.category} onChange={onChangeHandler}>
         <option value = ''>Select Category</option>
         <option value='Startup'>Startup</option>
         <option value='Technology'>Technology</option>
         <option value='Lifestyle'>Lifestyle</option>
       </select>
       <br />
-      <button type='submit' className='mt-8 w-40 h-12 bg-black text-white'>Add</button>
+      <button type='submit' className='mt-8 w-40 h-12 bg-sky-500 text-white hover:bg-sky-700'>Add</button>
     </form>
     </>
   )
